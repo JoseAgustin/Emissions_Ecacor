@@ -43,14 +43,14 @@ echo ' '
 echo '  Mes ='$mes 'DIA '$dia
 #
 echo 'Area Temporal distribution'
-./Atemporal.exe  > ../area.log
+./Atemporal.exe  > ../area.log &
 echo 'Point Temporal distribution'
 cd ../07_puntual/
-./Puntual.exe >& ../puntual.log &
+./Puntual.exe >& ../puntual.log 
 echo 'Movil Temporal distribution'
 cd ../06_temisM/
 ./Mtemporal.exe > ../movil.log &
-
+wait
 #
 #echo 'Biogenic'
 #cd ../12_biogenic

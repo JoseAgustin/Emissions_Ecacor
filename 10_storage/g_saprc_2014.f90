@@ -328,7 +328,7 @@ subroutine store
       real,ALLOCATABLE :: ea(:,:,:,:)
       real :: CDIM=3.0  ! celdimension in km
       character (len=19),dimension(NDIMS) ::sdim
-      character(len=39):: FILE_NAME
+      character(len=40):: FILE_NAME
       character(len=19),dimension(1,1)::Times
       character(len=19):: iTime
       character(8)  :: date
