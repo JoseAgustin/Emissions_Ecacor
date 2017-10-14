@@ -1,4 +1,4 @@
-#!/bin/csh
+#!/bin/bash
 #
 # bsub -q q_hpc -oo salida_postwrf -n2 -R "span[hosts=1]" './abril_2016.csh'
 #  abril_2017.csh
@@ -11,28 +11,28 @@
 #         del inventario de emisiones.
 #  Modificaciones:
 #         14/08/2013 Actualizacion para IE del 2014
-#
+#         14/10/2017 para bash
 #cd $PBS_O_WORKDIR
-set ProcessDir = $PWD
+ProcessDir=$PWD
 echo $ProcessDir
 #
 #  Build the fecha.txt file
 
-@ mes = 4
-@ dia = 22
+mes=4
+dia=22
  
-while ( $dia <= 22)
+while [ $dia -le 22 ] ;do
 echo $dia
 cd $ProcessDir/04_temis
 
 echo $PWD
 #
-if ( -e fecha.txt ) then
+if [ -e fecha.txt ]; then
 rm fecha.txt
-endif
+fi
 #    Aqui cambiar el año a modelar
 #
-ln -sf anio2017.csv  anio2014.csv
+ln -sf anio2014.csv.org  anio2014.csv
 #
 cat << End_Of_File > fecha.txt
 $mes       ! month jan =1 to dec=12
@@ -42,15 +42,14 @@ End_Of_File
 echo ' '
 echo '  Mes ='$mes 'DIA '$dia
 #
+echo 'Area Temporal distribution'
+./Atemporal.exe  > ../area.log
 echo 'Point Temporal distribution'
 cd ../07_puntual/
 ./Puntual.exe >& ../puntual.log &
 echo 'Movil Temporal distribution'
 cd ../06_temisM/
 ./Mtemporal.exe > ../movil.log &
-echo 'Area Temporal distribution'
-cd ../04_temis/
-./Atemporal.exe  >& ../area.log
 
 #
 #echo 'Biogenic'
@@ -109,8 +108,8 @@ cd ../10_storage
 ./saprc.exe > ../saprc.log
 ./cbm5.exe  > ../cbm5.log
 ./racm2.exe > ../racm2.log
-@ dia++
-end 
+ let dia=dia+1
+done
 #ncrcat -O wrfchemi.d01.radm2.2016-04-1* wrfchemi_d01_2016-04-16_00:00:00
 #mv wrfchemi_d01_2016-04-16_00:00:00 ../../DOMAIN/mecanismos/emisiones
 echo "DONE  guarda_RADM"

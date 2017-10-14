@@ -26,6 +26,10 @@ cd ../06_temisM
     ifort -O3 movil_temp.f90 -o Mtemporal.exe &
 cd ../07_puntual
     ifort -O3 -axAVX  t_puntal.f90 -o Puntual.exe &
+cd ../08_spec
+    ifort -O2 -axAVX  agg_a.f90 -o spa.exe &
+    ifort -O2 -axAVX agg_m.f90 -o spm.exe &
+    ifort -O2 -axAVX  agg_p.f90 -o spp.exe &
 cd ../09_pm25spec
 ifort -O2 -axAVX  pm25_speci_a.f90 -o spm25a.exe
 ifort -O2 -axAVX  pm25_speci_m.f90 -o spm25m.exe
