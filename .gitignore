@@ -9,7 +9,7 @@ salida*
 libnetcdf*
 02_aemis/A*.csv
 02_aemis/ANH3_2014.csv 
-index.csv
+02_aemis/index.csv
 04_temis/TA*csv
 05_semisM/M_*.csv
 06_temisM/TM*.csv
