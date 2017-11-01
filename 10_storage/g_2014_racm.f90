@@ -110,7 +110,7 @@ subroutine lee
     'TACO2_2014.csv','TAPM102014.csv','TAPM2_2014.csv', &
     'GSO4_A.txt','PNO3_A.txt','OTHE_A.txt','POA_A.txt','PEC_A.txt',&
     'TACH4_2014.csv','TACN__2014.csv'/
-	data fnameM /'TMCO__2014.csv','TMNH3_2014.csv','TMNOx_2014.csv','TMNOx_2014.csv','TMSO2_2014.csv',&
+	data fnameM /'TMCO__2014.csv','TMNH3_2014.csv','TMNO_2014.csv','TMNO2_2014.csv','TMSO2_2014.csv',&
     'RACM2_CH4_M.txt','RACM2_ETH_M.txt','RACM2_HC3_M.txt' ,'RACM2_HC5_M.txt', 'RACM2_HC8_M.txt',&
     'RACM2_ETE_M.txt','RACM2_OLI_M.txt','RACM2_OLT_M.txt' ,'RACM2_DIEN_M.txt','RACM2_BEN_M.txt',&
     'RACM2_TOL_M.txt','RACM2_XYM_M.txt','RACM2_XYP_M.txt' ,'RACM2_XYO_M.txt','RACM2_HCHO_M.txt',&
@@ -385,7 +385,7 @@ subroutine store
     dimids4 = (/id_dim(3),id_dim(4),id_dim(6),id_dim(1)/)
     print *,"Attributos Globales NF90_GLOBAL"
     !Attributos Globales NF90_GLOBAL
-    call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE","EI 2014 emissions for Mexico Area"))
+    call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE","EI 2014 emissions for Centraol Mexico Area"))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "START_DATE",iTime))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "DAY ",cday))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "SIMULATION_START_DATE",iTime))

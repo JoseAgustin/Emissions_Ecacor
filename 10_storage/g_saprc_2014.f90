@@ -20,6 +20,7 @@
 !   Inclusion de poblacion en la salida      10/06/2014
 !   Para año 2014 ns,ipm,icn,jcn,imt,jmt     12/07/2017
 !   Dos capas en puntuales                  18707/2017
+!   Se incluyen NO y NO2 de moviles         01/11/2017
 !
 module vars
     integer :: nf    ! number of files antropogenic
@@ -105,7 +106,7 @@ subroutine lee
   'TACO2_2014.csv'    ,'TAPM102014.csv'    ,'TAPM2_2014.csv', &
   'GSO4_A.txt'        ,'PNO3_A.txt'        ,'OTHE_M.txt'    ,'POA_A.txt','PEC_A.txt',&
   'TACH4_2014.csv'    ,'TACN__2014.csv'/
-	data fnameM /'TMCO__2014.csv','TMNOx_2014.csv','TMNOx_2014.csv','TMNH3_2014.csv','TMSO2_2014.csv',&
+	data fnameM /'TMCO__2014.csv','TMNO_2014.csv','TMNO2_2014.csv','TMNH3_2014.csv','TMSO2_2014.csv',&
   'SAPRC99_CH4_M.txt','SAPRC99_ACET_M.txt','SAPRC99_ALK3_M.txt','SAPRC99_ALK4_M.txt',&
   'SAPRC99_ALK5_M.txt','SAPRC99_ARO1_M.txt','SAPRC99_ARO2_M.txt','SAPRC99_BACL_M.txt',&
   'SAPRC99_BALD_M.txt','SAPRC99_ALK1_M.txt','SAPRC99_ALK2_M.txt','SAPRC99_CCHO_M.txt',&
@@ -328,7 +329,7 @@ subroutine store
       real,ALLOCATABLE :: ea(:,:,:,:)
       real :: CDIM=3.0  ! celdimension in km
       character (len=19),dimension(NDIMS) ::sdim
-      character(len=40):: FILE_NAME
+      character(len=39):: FILE_NAME
       character(len=19),dimension(1,1)::Times
       character(len=19):: iTime
       character(8)  :: date
@@ -381,7 +382,7 @@ subroutine store
     dimids4 = (/id_dim(3),id_dim(4),id_dim(6),id_dim(1)/)
     print *,"Attributos Globales NF90_GLOBAL"
     !Attributos Globales NF90_GLOBAL
-    call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE","EI 2014 emissions for Mexico Area"))
+    call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE","EI 2014 emissions for Central Mexico Area"))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "START_DATE",iTime))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "DAY ",cday))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "SIMULATION_START_DATE",iTime))
