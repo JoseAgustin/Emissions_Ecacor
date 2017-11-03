@@ -33,7 +33,7 @@ cd ../08_spec
 cd ../09_pm25spec
 ifort -O2 -axAVX  pm25_speci_a.f90 -o spm25a.exe
 ifort -O2 -axAVX  pm25_speci_m.f90 -o spm25m.exe
-ifort -O2 -axAVX  pm25_speci_p.f90 -o spm25p.exe
+ifort -O2 -axAVX  pm25_speci_p.f90 -o spm25p.exe &
 cd ../10_storage/
 ifort -O2 -axAVX -lnetcdff -L$NETCDF/lib -I$NETCDF/include g_2014_racm.f90 -o racm2.exe
 ifort -O2 -axAVX -lnetcdff -L$NETCDF/lib -I$NETCDF/include  g_cbm5_2014.f90 -o cbm5.exe
