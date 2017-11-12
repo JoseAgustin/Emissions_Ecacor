@@ -12,7 +12,7 @@
 !
 !
 !   modificado
-!   14/08/2012  Nombre archivos de PM 
+!   14/08/2012  Nombre archivos de PM
 !   02/10/2012  Ajuste en horas dia previo subroutina lee
 !   10/07/2017  Para 2014 nnscc 52, inclusion del 37123 y BC, CO2 y METH
 !   12/07/2017  Revision linea 158 se incluye else deallocate. Falta revisar 155 DONE
