@@ -327,7 +327,7 @@ subroutine store
       integer :: isp(radm)
       integer,dimension(NDIMS):: dim,id_dim
       real,ALLOCATABLE :: ea(:,:,:,:)
-      real :: CDIM=3.0  ! celdimension in km
+      real :: CDIM=9.0  ! celdimension in km
       character (len=19),dimension(NDIMS) ::sdim
       character(len=39):: FILE_NAME
       character(len=19),dimension(1,1)::Times
@@ -350,11 +350,11 @@ subroutine store
      hoy=date(7:8)//'-'//mes(date(5:6))//'-'//date(1:4)//' '//time(1:2)//':'//time(3:4)//':'//time(5:10)
     print *,hoy
     !write(current_date(4:4),'(A1)')char(6+48)
-     do periodo=1,2!2
+     do periodo=1,1!2 or 1
 	  if(periodo.eq.1) then
         FILE_NAME='wrfchemi.d01.'//trim(mecha)//'.'//current_date(1:19)         !******
 	   iit= 0
-	   eit= 11 !23
+	   eit= 23 !11 or 23
 	   iTime=current_date
 	  else if(periodo.eq.2) then
 	   iit=12
@@ -382,7 +382,7 @@ subroutine store
     dimids4 = (/id_dim(3),id_dim(4),id_dim(6),id_dim(1)/)
     print *,"Attributos Globales NF90_GLOBAL"
     !Attributos Globales NF90_GLOBAL
-    call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE","EI 2014 emissions for Central Mexico Area"))
+    call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE","EI 2014 emissions for Mexico Area"))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "START_DATE",iTime))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "DAY ",cday))
     call check( nf90_put_att(ncid, NF90_GLOBAL, "SIMULATION_START_DATE",iTime))
