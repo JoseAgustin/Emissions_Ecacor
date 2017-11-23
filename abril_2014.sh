@@ -19,9 +19,9 @@ echo $ProcessDir
 #  Build the fecha.txt file
 
 mes=4
-dia=22
+dia=12
  
-while [ $dia -le 22 ] ;do
+while [ $dia -le 12 ] ;do
 echo $dia
 cd $ProcessDir/04_temis
 
