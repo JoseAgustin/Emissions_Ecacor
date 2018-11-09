@@ -274,13 +274,13 @@ subroutine lee
 		  do ih=1,nh
                 ! Emission from g to gmol by 1/WTM
                 if(ih.gt.9 .and. ih.lt.19) then
-                  if(levl.lt.2) then
+                  if(levl.lt.4) then
                     eft(i,j,is,ih,levl)=eft(i,j,is,ih,levl)+edum(ih)/WTM(is)*scalp(ii)
                    else
                     eft(i,j,is,ih,levl)=eft(i,j,is,ih,levl)+edum(ih)/WTM(is)
                   end if
                  else
-                  if(levld.lt.2) then
+                  if(levld.lt.4) then
                     eft(i,j,is,ih,levld)=eft(i,j,is,ih,levld)+edum(ih)/WTM(is)*scalp(ii)
                   else
                     eft(i,j,is,ih,levld)=eft(i,j,is,ih,levld)+edum(ih)/WTM(is)
@@ -377,7 +377,7 @@ subroutine store
       dimids4 = (/id_dim(3),id_dim(4),id_dim(6),id_dim(1)/)
       print *,"Attributos Globales NF90_GLOBAL"
       !Attributos Globales NF90_GLOBAL
-      call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE",titulo))
+      call check( nf90_put_att(ncid, NF90_GLOBAL, "TITLE",titulo//" V4.0"))
       call check( nf90_put_att(ncid, NF90_GLOBAL, "START_DATE",iTime))
       call check( nf90_put_att(ncid, NF90_GLOBAL, "DAY ",cday))
       call check( nf90_put_att(ncid, NF90_GLOBAL, "SIMULATION_START_DATE",iTime))
