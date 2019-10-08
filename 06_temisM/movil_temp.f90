@@ -429,7 +429,7 @@ subroutine storage
 
   do k=1,nf-2
    print *,'Storing: ',casn(k),' ',efile(k)
-   open(unit=10,file=casn(k),action='write')
+   open(unit=10,file=trim(casn(k))//"i",action='write')
    write(10,*)casn(k),',ID, Hr to Hr24,g/h'
    write(10,'(I8,4A)')size(emis,dim=1),",",current_date,', ',cdia(daytype)
    do i=1,size(emis,dim=1)
@@ -441,7 +441,7 @@ subroutine storage
    k=nf-1
 ! WARNING iscc voc must be the last one to be read.
     print *,casn(k),efile(k)
-   open(unit=10,file=casn(k),action='write')
+   open(unit=10,file=trim(casn(k))//"i",action='write')
    write(10,*)casn(k),'ID, SCC,  Hr to Hr24'
    write(10,'(I8,4A)')size(epm2,dim=1)*nscc(k),', ',current_date,', ',cdia(daytype)
    do i=1,size(epm2,dim=1)
@@ -453,7 +453,7 @@ subroutine storage
 ! WARNING iscc voc must be the last one to be read.
    k=nf
     print *,casn(k),efile(k)
-   open(unit=10,file=casn(k),action='write')
+   open(unit=10,file=trim(casn(k))//'i',action='write')
    write(10,*)casn(k),'ID, SCC,  Hr to Hr24'
    write(10,'(I8,4A)')size(evoc,dim=1)*nscc(k),', ',current_date,', ',cdia(daytype)
    do i=1,size(evoc,dim=1)
