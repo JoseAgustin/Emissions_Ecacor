@@ -1,21 +1,42 @@
 # Emissions_Ecacor
+Set of programs to generate emissions inventory for Central México.
 
-The conversis system is a set of forran codes in order to convert the annual emissions inventory into a input file for WRF-chem model for Central Mexico. Consider the following mechanims: RADM2, SAPRC99, RACM, and CBM05.
-   |---Emiss_XXXX-master/
-        |
-        |---01_datos/		(Información para distribución espacial)
-        |---02_aemis/		(Distribución geográfica fuentes de área)
-        |---03_movilspatial /	(Distribución de vialidades y carreteras)
-        |---04_temis/		(distribución temporal fuentes de área)
-        |---05_semisM/		(Distribución geográfica fuentes móviles)
-        |---06_temisM/		(Distribución temporal F. Móviles)
-        |---07_puntual/		(Distrib. Geo. y temporal F. Puntuales)
-        |---08_spec/		(Especiación de COV área, móvil y puntual)
-        |---09_pm25spec/	(Especiación PM2.5 área, móvil y puntual)
-        |---10_storage/		(Generación archivo de emisiones netCDF)
-        |---Makefile		(Compila los ejecutables)
-        |---abril_2014.sh	(Genera emisione para el 22 abril 2014)
-        |---README.md		(información del directorio)
+## Descripción
 
+Conjunto de programas en Fortran para generar el **inventario de emisiones del centro de México** 
+(zona ECACOR) en formato compatible con el modelo **WRF-Chem**.
 
-More documentation in directory doc
+Cubre emisiones de fuentes móviles, de área y puntuales de contaminantes criterio para la 
+Zona Metropolitana del Valle de México y estados circundantes.
+
+## Estructura del repositorio
+
+```
+Emissions_Ecacor/
+├── 01_datos/       # Datos de entrada del inventario
+├── README.md
+└── .gitignore
+```
+
+## Requisitos
+
+- Fortran 90/95 o superior
+- Bibliotecas NetCDF
+- WRF-Chem
+
+## Uso
+
+1. Preparar los datos de entrada en `01_datos/`
+2. Compilar y ejecutar los programas en orden
+3. Las salidas son archivos NetCDF para WRF-Chem
+
+## Autor
+
+**José Agustín García Reynoso**  
+Centro de Ciencias de la Atmósfera, UNAM  
+📧 agustin@atmosfera.unam.mx  
+🔗 https://github.com/JoseAgustin
+
+## Licencia
+
+Ver archivo [LICENSE](LICENSE) para detalles.
