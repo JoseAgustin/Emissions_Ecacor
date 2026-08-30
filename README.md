@@ -3,17 +3,25 @@ Set of programs to generate emissions inventory for Central México.
 
 ## Descripción
 
-Conjunto de programas en Fortran para generar el **inventario de emisiones del centro de México** 
-(zona ECACOR) en formato compatible con el modelo **WRF-Chem**.
-
-Cubre emisiones de fuentes móviles, de área y puntuales de contaminantes criterio para la 
-Zona Metropolitana del Valle de México y estados circundantes.
+Inventario de emisiones para modelación de calidad del aire con **WRF-Chem** para la región del **Centro de México** (zona ECACOR).
+Incluye emisiones de contaminantes criterio (CO, NOₓ, SO₂, PM₂.₅, PM₁₀, COV) organizadas en sectores:
+fuentes móviles, fuentes de área y fuentes de punto.
 
 ## Estructura del repositorio
 
 ```
 Emissions_Ecacor/
-├── 01_datos/       # Datos de entrada del inventario
+├── 01_datos/        # Información para la distribución espacial en la malla correspondiente
+├── 02_aemis/        # Distribución espacial de las emisiones de área
+├── 03_movilspatial/ # Agrupa la malla de las emisiones por vialidades y carreteras
+├── 04_temis/        # Distribución temporal de las emisiones de área (anual → horaria)
+├── 05_semisM/       # Distribución espacial de emisiones de fuentes móviles
+├── 06_temisM/       # Distribución temporal de las emisiones de fuentes móviles (anual → horaria)
+├── 07_puntual/      # Distribución temporal de las emisiones de fuentes fijas (anual → horaria)
+├── 08_spec/         # Especiación de COV según el mecanismo químico a usar
+├── 09_pm25spec/     # Especiación de PM2.5 en especies inorgánicas y orgánicas
+├── 10_storge/       # Lee salidas anteriores y genera archivo NetCDF para WRF-Chem
+├── 12_cmaq/         # Generación del inventario para el modelo CMAQ (opcional)
 ├── README.md
 └── .gitignore
 ```
@@ -21,14 +29,24 @@ Emissions_Ecacor/
 ## Requisitos
 
 - Fortran 90/95 o superior
-- Bibliotecas NetCDF
-- WRF-Chem
+- Bibliotecas NetCDF (libnetcdf, libnetcdff)
+- WRF-Chem (para usar las emisiones generadas)
+- Python 3.x (para scripts de pre/post-procesamiento, opcional)
 
 ## Uso
 
 1. Preparar los datos de entrada en `01_datos/`
-2. Compilar y ejecutar los programas en orden
-3. Las salidas son archivos NetCDF para WRF-Chem
+2. Editar el mes y día en el archivo **`abril_2014.sh`**
+3. Ejecutar los scripts en orden secuencial (directorios 02 al 09)
+4. La salida final (archivo NetCDF para WRF-Chem) se guarda en **`10_storge/`**
+5. Para generar el inventario para CMAQ, usar el directorio `12_cmaq/`
+
+## Referencia
+
+Si utiliza este código en su investigación, por favor cite:
+
+> García-Reynoso, J.A. et al. Inventario de Emisiones del **Centro de México** (zona ECACOR) para modelación de calidad del aire.
+> Centro de Ciencias de la Atmósfera, UNAM. https://github.com/JoseAgustin/Emissions_Ecacor
 
 ## Autor
 
